@@ -323,6 +323,8 @@ const Footer = () => {
   );
 };
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 function SignUpDialog({
   isLoggedIn,
   setIsLoggedIn,
@@ -349,7 +351,6 @@ function SignUpDialog({
   });
 
   const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!email) {
       setEmailError("Email cannot be empty");
       return false;
@@ -507,7 +508,7 @@ function SignUpDialog({
           Sign Up
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[440px] rounded-[20px] p-0 border-none">
+      <DialogContent className="rounded-[20px] p-0 border-none">
         <div className="flex flex-col items-center p-6">
           <Image
             className="absolute -top-[45px] right-[45px]"
@@ -516,7 +517,7 @@ function SignUpDialog({
             height={65}
             alt="Github"
           />
-          <DialogHeader className="text-center">
+          <DialogHeader className="w-full max-w-[340px] text-center">
             <DialogTitle className="text-[22px] font-[500] font-[AlibabaPuHuiTi] text-black">
               Sign Up
             </DialogTitle>
@@ -526,10 +527,10 @@ function SignUpDialog({
           </DialogHeader>
 
           <div className="w-full mt-6 flex flex-col items-center">
-            <div className="w-[340px] mb-4">
+            <div className="w-full max-w-[340px] mb-4">
               <Input
                 type="email"
-                placeholder="Enter Email"
+                placeholder="Enter email"
                 className={`w-full h-[50px] rounded-[40px] pl-[20px] ${
                   emailError ? "border-red-500" : ""
                 }`}
@@ -545,11 +546,11 @@ function SignUpDialog({
               )}
             </div>
 
-            <div className="w-[340px] mb-8">
+            <div className="w-full max-w-[340px] mb-8">
               <div className="flex">
                 <Input
                   type="text"
-                  placeholder="Enter Code"
+                  placeholder="SMS verification code"
                   className={`flex-1 h-[50px] rounded-l-[40px] rounded-r-none pl-[20px] ${
                     codeError ? "border-red-500" : ""
                   }`}
@@ -562,15 +563,15 @@ function SignUpDialog({
                 />
                 <Button
                   onClick={handleSendCode}
-                  disabled={isCodeSent || isSendingCode}
-                  className="hover:cursor-pointer rounded-l-none rounded-r-[40px] w-[100px] h-[50px] bg-gray-200 hover:bg-gray-300 text-gray-700"
+                  disabled={isCodeSent || isSendingCode || !emailRegex.test(email)}
+                  className="hover:cursor-pointer rounded-l-none rounded-r-[40px] w-[30%] max-w-[80px] h-[50px] bg-gray-200 hover:bg-gray-300 text-gray-700"
                 >
                   {isSendingCode ? (
                     <LoaderIcon className="animate-spin" />
                   ) : isCodeSent ? (
                     `${countdown}s`
                   ) : (
-                    "Send Code"
+                    "Send"
                   )}
                 </Button>
               </div>
@@ -588,7 +589,7 @@ function SignUpDialog({
                 !!emailError ||
                 !!codeError
               }
-              className={`w-[340px] h-[46px] rounded-[30px] text-white font-[AlibabaPuHuiTi] font-medium ${
+              className={`w-full max-w-[340px] h-[46px] rounded-[30px] text-white font-[AlibabaPuHuiTi] font-medium ${
                 isSubmitting ||
                 !email ||
                 code.length !== CODE_LENGTH ||

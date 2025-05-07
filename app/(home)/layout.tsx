@@ -84,32 +84,41 @@ export default function Layout({ children }: { children: ReactNode }) {
   const { address } = useAppKitAccount();
 
   useEffect(() => {
-    if (address) {
-      const userEmail = localStorage.getItem("userEmail");
-      if (userEmail) {
-        fetch("https://decimal-never-consulting-retrieved.trycloudflare.com/be/walletConnect", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ 
-            address, 
-            email: userEmail 
-          }),
-        })
-          .then(response => response.json())
-          .then(data => {
+    const handleWalletConnect = async () => {
+      if (address) {
+        const userEmail = localStorage.getItem("userEmail");
+        if (userEmail) {
+          try {
+            const response = await fetch(
+              "https://decimal-never-consulting-retrieved.trycloudflare.com/be/walletConnect",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  address,
+                  email: userEmail,
+                }),
+              }
+            );
+            
+            const data = await response.json();
+            
             if (data.msg === "wallet address binding success") {
-              console.log("钱包绑定成功:", data);
+              // Success
+              console.log("Wallet binding success:", data);
             } else {
-              console.error("钱包绑定失败:", data);
+              console.error("Wallet binding failed:", data);
             }
-          })
-          .catch(error => {
-            console.error("钱包绑定请求错误:", error);
-          });
+          } catch (error) {
+            console.error("Wallet binding request error:", error);
+          }
+        }
       }
-    }
+    };
+    
+    handleWalletConnect();
   }, [address]);
 
   useEffect(() => {
@@ -218,9 +227,9 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <HomeLayout
-      className="[&>header]:bg-white [&_ul:nth-of-type(2)]:gap-[15px] relative before:content-[''] before:absolute before:inset-0 before:bg-[url('/home/bg.png')] before:[background-size:180px_180px] before:bg-repeat before:bg-gray-200 before:opacity-30 before:-z-10"
+      className="[&>header]:bg-white max-lg:[&_a+div]:gap-[15px] [&_ul:nth-of-type(2)]:gap-[15px] [&_ul:nth-of-type(2)]:ml-[12px] max-lg:[&_ul:nth-of-type(2)]:ml-0 relative before:content-[''] before:absolute before:inset-0 before:bg-[url('/home/bg.png')] before:[background-size:180px_180px] before:bg-repeat before:bg-gray-200 before:opacity-30 before:-z-10"
       {...baseOptions}
-      searchToggle={{
+      themeSwitch={{
         enabled: false,
       }}
       links={links as any}
@@ -383,7 +392,7 @@ function SignUpDialog({
 
     try {
       const response = await fetch(
-        "https://decimal-never-consulting-retrieved.trycloudflare.com/be/ses", 
+        "https://decimal-never-consulting-retrieved.trycloudflare.com/be/ses",
         {
           method: "POST",
           headers: {
@@ -412,7 +421,6 @@ function SignUpDialog({
           });
         }, 1000);
 
-        console.log("Verification code sent successfully");
       } else {
         console.error("Failed to send verification code:", data);
       }
@@ -444,7 +452,7 @@ function SignUpDialog({
         const data = await response.json();
 
         if (data.msg === "login successful") {
-          console.log("登录成功:", data);
+          console.log("Login successful:", data);
 
           setIsOpen(false);
           setIsLoggedIn(true);
@@ -466,11 +474,11 @@ function SignUpDialog({
           setEmailError("");
           setCodeError("");
         } else {
-          console.error("登录失败:", data);
+          console.error("Login failed:", data);
           setCodeError(data.msg || "Login failed");
         }
       } catch (error) {
-        console.error("登录请求错误:", error);
+        console.error("Login request error:", error);
         setCodeError("Network error, please try again");
       } finally {
         setIsSubmitting(false);
@@ -486,8 +494,6 @@ function SignUpDialog({
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("userEmail");
     }
-
-    console.log("User logged out");
   };
 
   if (isLoggedIn) {
@@ -563,7 +569,9 @@ function SignUpDialog({
                 />
                 <Button
                   onClick={handleSendCode}
-                  disabled={isCodeSent || isSendingCode || !emailRegex.test(email)}
+                  disabled={
+                    isCodeSent || isSendingCode || !emailRegex.test(email)
+                  }
                   className="hover:cursor-pointer rounded-l-none rounded-r-[40px] w-[30%] max-w-[80px] h-[50px] bg-gray-200 hover:bg-gray-300 text-gray-700"
                 >
                   {isSendingCode ? (

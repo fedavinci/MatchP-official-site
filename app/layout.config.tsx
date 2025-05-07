@@ -11,11 +11,8 @@ export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
       <>
-        <Image src="/icon.svg" width={80} height={30} alt="Logo" />
+        <Image src="/icon.svg" width={62} height={24} alt="Logo" />
       </>
     ),
   },
-  themeSwitch:{
-    enabled: false,
-  }
 };

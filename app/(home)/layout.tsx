@@ -145,7 +145,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           Stake
         </div>
       ),
-      url: "/",
+      url: "/stake",
     },
     {
       text: (

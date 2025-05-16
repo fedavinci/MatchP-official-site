@@ -52,12 +52,12 @@ export default function HomePage() {
           </div>
 
           <div className="flex gap-[30px] max-lg:justify-center max-lg max-lg:translate-y-[270px]">
-            <Link href="/" className="inline-block">
+            <Link href="/stake" className="inline-block">
               <div className="text-center bg-[#CAE7FF] text-[#333333] font-medium py-3 px-8 rounded-full hover:bg-[#A0CFFF] transition-colors  font-[AlibabaPuHuiTi]">
                 Start Stake
               </div>
             </Link>
-            <Link href="/" className="inline-block">
+            <Link href="/docs" className="inline-block">
               <div className="text-center bg-[#454545] text-white font-medium py-3 px-8 rounded-full hover:bg-[#444444] transition-colors  font-[AlibabaPuHuiTi]">
                 Learn More
               </div>

@@ -1,0 +1,60 @@
+---
+title: "Prediction Functions​"
+---
+
+### Overview
+
+The Prediction Functions module aims to significantly enhance user engagement and community interaction by introducing interactive prediction mechanisms. Users can express their predictions regarding match outcomes and receive corresponding rewards based on the accuracy of their forecasts. This module is deeply integrated with the Intelligent Schedule Management and Real-Time Scoring System, building a comprehensive and immersive match interaction experience for users.
+
+### Core Concepts
+
+- Match-Linked Predictions: Prediction activities are closely linked to the match schedules and real-time scoring data on the platform, ensuring the relevance and timeliness of predictions.
+- User-Driven Value Creation: Encourages users to actively participate in predictions, share insights, and foster a vibrant community discussion atmosphere.
+- Diverse Prediction Markets: Initially supporting champion predictions, it will expand to more abundant prediction types such as win/loss predictions and specific match predictions, building diverse prediction markets.
+- Dynamic Odds Discovery: Introducing a dynamic odds mechanism where odds adjust in real-time based on user betting behavior, more accurately reflecting the market consensus on different outcomes.
+- Incentive-Driven Participation: By providing various forms of rewards such as match rewards and special privileges, it incentivizes users to actively participate in predictions, enhancing user stickiness.
+
+### Core Features
+
+- Prediction Market Creation:
+  - Match Association: Automatically or manually precisely associates prediction markets with specific match stages (group stage, knockout stage, finals, etc.).
+  - Prediction Type Definition: Supports the creation of various prediction markets:
+    - Champion Prediction: Predicting the ultimate winner of the entire match.
+    - Match Winner Prediction: Predicting the winner of a single match, linked to the win/loss betting function of the Schedule module.
+    - Specific match Prediction: Predicting whether specific matchs will occur during a match, such as the total score, the first scorer, etc.
+  - Odds Discovery: Based on the distribution of user bets on different outcomes, the system dynamically generates and adjusts odds, forming prediction prices that more closely align with market consensus.
+- User Prediction Submission:
+  - Simple and User-Friendly Interface: Users can conveniently submit their prediction choices and bet amounts on the match or prediction activity page.
+  - Flexible Betting Amount: Allows users to customize their bet amounts.
+  - Real-Time Odds Display: Clearly displays the real-time odds corresponding to each prediction option, helping users make informed decisions.
+- Prediction Result Settlement:
+  - Automatic and Efficient Settlement: Seamlessly integrated with the Real-Time Scoring System, the system automatically and accurately settles prediction results after the match concludes.
+  - Automatic Reward Distribution: Automatically distributes rewards to users' accounts based on their bet amounts and the odds of their successful predictions.
+- Leaderboards and Rewards:
+  - Accurate Prediction Leaderboards: Displays users with high prediction accuracy in real-time, creating a competitive atmosphere and increasing engagement.
+  - Generous Reward Mechanisms: Provides various reward methods, including match rewards and special platform privileges, incentivizing active user participation.
+- Multi-Stage Prediction Participation: Allows users to participate in predictions at different stages of the match, such as group stage qualification predictions and knockout stage advancement predictions, increasing the strategic depth and continuity of predictions.
+- Flexible Virtual Currency Betting: Users can choose to bet by staking VOTE tokens, while non-staking users can choose Funs or any digital token supported by the platform, lowering the barrier to participation.
+- Dynamic Odds Real-Time Updates: Real-time tracking of user betting behavior and dynamic updating of odds, reflecting market sentiment and expected changes.
+
+### Staking & Prediction Revenue Model
+
+- Staking Enhancement System:
+  - Basic Mode: Any user can participate in predictions without staking, but will be subject to a higher protocol fee (0.5% protocol / 0.2% platform / 0.3% organizer).
+  - Staking Privilege: Staking MATCH tokens unlocks: Optimized fee split (0.1% protocol / 0.2% platform / 0.7% organizer).
+- Capital Flow Model (Guess the Champion):
+  - Only Player A bets 100 Funs/VOTE into Team 1 Pool.
+  - Only Player B bets 200 Funs/VOTE into Team 2 Pool.
+  - Only Player A bets 300 Funs/VOTE into Team 3 Pool.
+  - Only Player B bets 400 Funs/VOTE into Team 4 Pool.
+  - Upon MATCH conclusion, if Team 1 is the champion, winner A receives 99% of the other pools' funds, i.e., 990 Funs/VOTE, with a 1% protocol fee deducted.
+- Fee Distribution:
+  - Non-Staked: 45 Funs (protocol) + 18 Funs (platform) + 27 Funs (organizer).
+  - Staked: 9 VOTE (protocol) + 18 VOTE (platform) + 63 VOTE (organizer).
+
+### Advantages
+
+- Significantly Enhances User Engagement: Provides users with in-depth interaction and participation methods beyond just watching matchs.
+- Increases Platform Fun and Stickiness: The introduction of prediction elements adds suspense and anticipation to matchs, enhancing user retention.
+- Promotes Community Interaction and Communication: Users can communicate and discuss prediction results, odds changes, etc., forming a closer community.
+- Potential for Diversified Monetization Models: Platform revenue growth can be achieved through prediction betting fees, sponsorship collaborations, and other means.

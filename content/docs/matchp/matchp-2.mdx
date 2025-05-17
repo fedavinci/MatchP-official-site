@@ -1,0 +1,59 @@
+---
+title: "Real-Time Scoring System​"
+---
+
+### Overview
+
+This module aims to provide a real-time, user-participatory scoring system that allows every user to evaluate matchs, works, or other relevant content. Simultaneously, the system will introduce a weighting mechanism to enhance the influence of professional or expert users' scores and provide scalability for richer future scoring scenarios.
+
+### Core Concepts
+
+- Universal Participation, Real-Time Evaluation: The system allows all users to provide real-time scores during matchs or the display period of works.
+- Multi-Level Weighting System: Scores from different types of users will have varying weights, thereby differentiating the influence of ordinary users and professionals.
+- Future Extensibility: The system architecture will be designed with future integration of more types of scoring objects (such as works) and more complex scoring logic in mind.
+- Diversity of Data Sources: Scoring weights can be based on various data sources, including NFT holdings and platform-specific data.
+- Multi-purpose Scoring: Scoring results are dynamically updated with visualized presentation, supporting applications across multiple scenarios including competitions, artistic creations, and corporate performance
+
+### Core Features
+
+- Real-Time Score Submission:
+  - Users can evaluate the current match or work through a simple and user-friendly interface within a specified scoring window.
+  - Scoring methods can include star ratings, numerical ratings, or the selection of custom evaluation dimensions.
+- User Identity and Weight Recognition:
+  - Professional/Expert Verification: The system can integrate professional certification or expert identification mechanisms. Verified users will have higher weighting when scoring. The authentication method requires manual addition of either a did (Decentralized Identity) or email address, with each did permitted to cast only one VOTE.
+  - NFT Weighting: The system can assign scoring weight based on the quantity or type of specific NFTs held by a user. Holding rare or specific series of NFTs may grant higher scoring influence.
+  - Platform Data Weighting: The platform can assign scoring weight to users based on its own user data (e.g., historical participation, contribution, professional field).
+  - Minimum Weight Participation: For users without any special identity or data support, a minimum scoring weight will be assigned by default. Their evaluations will still be included in the final results, but their influence will be relatively smaller.
+- Score Aggregation and Calculation:
+  - The system will collect scoring data from all users in real-time.
+  - Based on the different weights of users, a weighted average of the scores will be calculated to determine the final real-time score.
+  - The score aggregation algorithm needs to be flexible and configurable to adapt to different scenarios.
+- Score Result Display:
+  - The weighted average score results will be updated and displayed in real-time.
+  - Optionally, the distribution of scores from users with different weights can be displayed to provide more comprehensive evaluation information.
+- Considerations for Future Feature Expansion:
+  - Work Scoring: The system architecture should support future integration of scoring functionality for works (e.g., artwork, music, code).
+  - Associated Work Scoring: For match participants, future integration could link their related works and incorporate the scores of these works into the match scoring.
+  - Custom Scoring Dimensions: Allow platform or match organizers to customize the dimensions and weights of scoring.
+  - Score Review and Dispute Resolution Mechanisms: Consider introducing score review mechanisms to prmatch malicious sclioring and provide a process for dispute resolution.
+  ### Anonymous Voting
+  - (Powered by Phala Privacy Computing)
+    To protect user privacy and enhance scoring fairness, we will integrate Phala Network's privacy computing technology for anonymous voting. User scores are processed within Phala's Trusted Execution Environment (TEE), prmatching the platform from tracking user identities. But could
+    Technical Solution:
+  - Phala Integration: The platform connects to Phala Network. Encrypted scoring data is sent to Phala Worker's TEE.
+  - Anonymous Processing: Scores are decrypted, anonymously aggregated, and weighted within the TEE (weights are anonymously passed to the TEE).
+  - Result Return: The platform only receives the anonymously aggregated scoring results.
+    ![Image](/docs/image.jpeg)
+  ### Weight Calculation Example (Illustrative)
+  - Expert Score: Weighting factor 60
+  - Specific NFT Holder: Weighting factor 5
+  - Active Platform User: Weighting factor 1.5
+  - Ordinary User: Weighting factor 1
+    The final score will be derived by calculating the weighted average of all scores. For example, if 100 users participate in scoring an match, including 10 experts, 20 specific NFT holders, 30 active platform users, and 40 ordinary users, their average scores will be multiplied by their respective weighting factors, summed up, and then divided by the total sum of weighting factors to obtain the final weighted average score.
+  ### Advantages
+  - More comprehensive and objective evaluation: Aggregates opinions from users with diverse backgrounds.
+  - Enhances professionalism and authority: Amplifies the influence of professional users' scores through the weighting mechanism.
+  - Increases user engagement: Allows every user to participate in the evaluation process.
+  - Provides a flexible infrastructure for future expansion.
+  - Weighting strategies can be customized based on platform characteristics and needs.
+  - Anonymous VOTE: Assume a total score of 10, with the diffrent weights for different user identities, every one don't know erery VOTE.

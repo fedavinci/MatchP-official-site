@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { HomeLayout } from "fumadocs-ui/layouts/home";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 import {
   Tooltip,
@@ -229,9 +230,6 @@ export default function Layout({ children }: { children: ReactNode }) {
     <HomeLayout
       className="[&>header]:bg-white max-lg:[&_a+div]:gap-[15px] [&_ul:nth-of-type(2)]:gap-[15px] [&_ul:nth-of-type(2)]:ml-[12px] max-lg:[&_ul:nth-of-type(2)]:ml-0 relative before:content-[''] before:absolute before:inset-0 before:bg-[url('/home/bg.png')] before:[background-size:180px_180px] before:bg-repeat before:bg-gray-200 before:opacity-30 before:-z-10"
       {...baseOptions}
-      themeSwitch={{
-        enabled: false,
-      }}
       links={links as any}
     >
       {children}
@@ -241,6 +239,12 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 
 const Footer = () => {
+  const { setTheme } = useTheme();
+
+  useEffect(() => {
+    setTheme("light");
+  }, []);
+
   return (
     <footer className="mt-auto border-t bg-white py-12 text-fd-secondary-foreground">
       <div className="flex items-center gap-[20px] sm:justify-evenly flex-col sm:flex-row">
@@ -312,13 +316,15 @@ const Footer = () => {
 
             <Tooltip>
               <TooltipTrigger>
-                <Image
-                  src="/logos/doc.svg"
-                  width={40}
-                  height={40}
-                  alt="doc"
-                  className="cursor-pointer"
-                />
+                <Link href={"/docs"}>
+                  <Image
+                    src="/logos/doc.svg"
+                    width={40}
+                    height={40}
+                    alt="doc"
+                    className="cursor-pointer"
+                  />
+                </Link>
               </TooltipTrigger>
               <TooltipContent>Docs</TooltipContent>
             </Tooltip>

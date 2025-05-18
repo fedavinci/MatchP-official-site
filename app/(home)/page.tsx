@@ -1,11 +1,8 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "MatchP",
-};
 
 export default function HomePage() {
   return (
@@ -81,7 +78,7 @@ export default function HomePage() {
           </div>
         </Link>
       </div>
-      
+
       <div className="w-full max-w-5xl flex justify-center mb-[150px] lg:hidden">
         <Link href="/" className="inline-block">
           <div className="flex flex-col items-center ">
@@ -107,12 +104,19 @@ export default function HomePage() {
           height={353}
           alt="showcase"
         />
-        <Image
-          src="/home/advantages.png"
-          width={550}
-          height={353}
-          alt="advantages"
-        />
+        <div className="relative">
+          <Image
+            src="/home/advantages.png"
+            width={550}
+            height={353}
+            alt="advantages"
+          />
+          <a
+            href="https://www.uefun.net"
+            target="_blank"
+            className="absolute top-[26.1%] left-[9.5%] w-[19.3%] h-[4.4%]"
+          ></a>
+        </div>
       </div>
     </div>
   );
